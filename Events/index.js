@@ -25,7 +25,7 @@ module.exports = function (context, req) {
             allevent.forEach((elem)=>{
                 delete elem['_id'];
             });
-            const collicon = client.db('front-end').collection('icon');
+            const collicon = client.db('front-end').collection('icons');
             var groupicon = await collicon.findOne({'group':event.group});
             if (groupicon === undefined || groupicon === null)
                 groupicon = '';
