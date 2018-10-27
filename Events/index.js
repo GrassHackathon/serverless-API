@@ -20,11 +20,23 @@ module.exports = function (context, req) {
                 };
                 context.done();
             }
-            const collevent = client.db('Events').collection(event.element);
+            const collevent = client.db(event.group).collection(event.element);
             var allevent = await collevent.find({}).toArray();
+            allevent.forEach((elem)=>{
+                delete elem['_id'];
+            });
+            const collicon = client.db('front-end').collection('icon');
+            var groupicon = await collicon.findOne({'group':event.group});
+            if (groupicon === undefined || groupicon === null)
+                groupicon = '';
+            else
+                groupicon = groupicon.icon;
 
             context.res = {
-                body : JSON.stringify(allevent)
+                body : JSON.stringify({
+                    'events' : allevent,
+                    'groupicon' : groupicon,
+                })
             }
 
             client.close();
