@@ -54,6 +54,14 @@ module.exports = function (context, req) {
             return;
         }
 
+        const catecoll = client.db('hackathon').collection('Category')
+        const find_output = await catecoll.findOne({'element' : eventElement});
+
+        if (find_output === undefined || find_output === null) {
+            const value_output = await catecoll.find().sort({'value' : -1}).limit(1).toArray();
+            await catecoll.insertOne({'group':eventGroup, 'element':eventElement, 'value' :  value_output[0]['value']+1})
+        }
+
         context.res = {
             body:"ok"
         }
