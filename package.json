@@ -1,0 +1,25 @@
+{
+  "requires": true,
+  "lockfileVersion": 1,
+  "dependencies": {
+    "mongodb": "^3.1.8"
+  },
+  "name": "serverless-api",
+  "version": "0.0.1",
+  "description": "using Azure function to be API",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GrassHackathon/serverless-API.git"
+  },
+  "author": "csielee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GrassHackathon/serverless-API/issues"
+  },
+  "homepage": "https://github.com/GrassHackathon/serverless-API#readme"
+}
